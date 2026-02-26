@@ -1,0 +1,24 @@
+<section class="card-container">
+  <h3>{{ fullname }}</h3>
+  <p>Description</p>
+
+  User Info
+  <p>Nane: {{user.name}}</p>
+  <p>Email: {{user.email}}</p>
+  <p>Description: {{user.description}}</p>
+
+  <button (click)="sendMessage()">Contactar</button>
+
+  <button (click)="sum(4)">Sumar</button>
+
+
+  <button title="Ver mas informacion" >Ver mas</button>
+  <button [title]="label">Ver mas</button>
+  <button [title]="obtenerLabel()">Ver mas 2</button>
+
+  <button (click)="showPassword()">Mostrar Password 👁️</button>
+  <button (click)="hidePassword()">Ocultar Password  🙈️</button>
+
+  <input [type]="inputType">
+
+</section>
