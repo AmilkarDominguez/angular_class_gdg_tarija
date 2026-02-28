@@ -9,5 +9,5 @@ import { Card } from './components/card/card';
   styleUrl: './app.scss',
 })
 export class App {
-  protected readonly title = signal('class_01');
+  protected readonly title = signal('class_base');
 }

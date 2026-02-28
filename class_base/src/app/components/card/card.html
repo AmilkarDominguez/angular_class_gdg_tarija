@@ -1,24 +1,17 @@
-<section class="card-container">
-  <h3>{{ fullname }}</h3>
-  <p>Description</p>
+<section class="card-container"
+         [ngClass]="{
+  'selected' : condicion,
+  'unselected' :!condicion,
+  }"
+         [style.height.rem]="alto"
+         [style.backgroundColor]="color">
 
-  User Info
-  <p>Nane: {{user.name}}</p>
-  <p>Email: {{user.email}}</p>
-  <p>Description: {{user.description}}</p>
+  {{ condicion }}
 
-  <button (click)="sendMessage()">Contactar</button>
+  <input type="checkbox" [(ngModel)]="condicion">
 
-  <button (click)="sum(4)">Sumar</button>
+  <input type="range" min="10" max="30" [(ngModel)]="alto">
+  <input type="color" [(ngModel)]="color">
 
-
-  <button title="Ver mas informacion" >Ver mas</button>
-  <button [title]="label">Ver mas</button>
-  <button [title]="obtenerLabel()">Ver mas 2</button>
-
-  <button (click)="showPassword()">Mostrar Password 👁️</button>
-  <button (click)="hidePassword()">Ocultar Password  🙈️</button>
-
-  <input [type]="inputType">
 
 </section>
