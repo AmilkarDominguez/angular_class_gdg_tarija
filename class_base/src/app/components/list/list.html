@@ -1,0 +1,16 @@
+<section class="list-container">
+  @for (item of users; track item) {
+    <app-card
+      [user]="item"
+      (notify)="handleNotify($event)"
+      (eventStack)="handleStack($event)">
+    </app-card>
+  }
+</section>
+
+
+<h2>Stacks Seleccionados</h2>
+
+@for (item of selectedStacks; track item) {
+  <p>{{ item }}</p>
+}

@@ -1,17 +1,8 @@
-<section class="card-container"
-         [ngClass]="{
-  'selected' : condicion,
-  'unselected' :!condicion,
-  }"
-         [style.height.rem]="alto"
-         [style.backgroundColor]="color">
+<section class="card-container">
+  <p>Nombre: {{user.name}}</p>
+  <p>Stack: {{user.stack}}</p>
 
-  {{ condicion }}
-
-  <input type="checkbox" [(ngModel)]="condicion">
-
-  <input type="range" min="10" max="30" [(ngModel)]="alto">
-  <input type="color" [(ngModel)]="color">
-
+  <button (click)="selected(user)">Selecionar</button>
+  <button (click)="selectStack(user.stack)">Selecionar Stack</button>
 
 </section>
