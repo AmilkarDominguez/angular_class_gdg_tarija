@@ -1,4 +1,14 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  Output,
+  SimpleChanges
+} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {User} from '../../core/types/user';
@@ -9,27 +19,40 @@ import {User} from '../../core/types/user';
   templateUrl: './card.html',
   styleUrl: './card.scss',
 })
-export class Card {
+export class Card implements OnInit, OnDestroy, OnChanges {
 
   @Input()
   user!: User;
 
   @Output()
-  notify: EventEmitter<User>;
+  eventSelect: EventEmitter<User>;
 
   @Output()
-  eventStack: EventEmitter<string>;
+  eventDelete: EventEmitter<string>;
+
+  ngOnInit() {
+    console.log('card ngOnInit');
+  }
+
+  ngOnDestroy() {
+    console.log('card OnDestroy');
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log('card ngOnChanges');
+    console.log(changes);
+  }
 
   constructor(){
-    this.notify = new EventEmitter<User>();
-    this.eventStack = new EventEmitter<string>();
+    this.eventSelect = new EventEmitter<User>();
+    this.eventDelete = new EventEmitter<string>();
   }
 
   selected(user: User) {
-    this.notify.emit(user);
+    this.eventSelect.emit(user);
   }
 
-  selectStack(stack: string){
-    this.eventStack.emit(stack);
+  delete(name: string){
+    this.eventDelete.emit(name);
   }
 }
