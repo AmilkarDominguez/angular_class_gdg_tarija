@@ -1,0 +1,42 @@
+<section class="login-container">
+  <h1>SISTEMA GDG</h1>
+  <h3>Login</h3>
+
+
+  <mat-form-field>
+    <mat-label>Correo</mat-label>
+    <input
+      [formControl]="email"
+      matInput
+      placeholder="Correo"
+      required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Correo 2</mat-label>
+    <input
+      [(ngModel)]="email2"
+      matInput
+      placeholder="Correo"
+      required>
+  </mat-form-field>
+
+  <p>{{email}}</p>
+  <p>{{email2}}</p>
+
+
+
+  <mat-form-field>
+    <mat-label>Select</mat-label>
+    <mat-select>
+      <mat-option value="one">First option</mat-option>
+      <mat-option value="two">Second option</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Textarea</mat-label>
+    <textarea matInput></textarea>
+  </mat-form-field>
+
+</section>
