@@ -2,41 +2,41 @@
   <h1>SISTEMA GDG</h1>
   <h3>Login</h3>
 
+  <form (submit)="onSubmit($event)" class="form-login">
+    <!--    email-->
+    <mat-form-field>
+      <mat-label>Correo</mat-label>
+      <input
+        [formField]="loginForm.email"
+        matInput
+        placeholder="Correo">
+    </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Correo</mat-label>
-    <input
-      [formControl]="email"
-      matInput
-      placeholder="Correo"
-      required>
-  </mat-form-field>
+    @if (loginForm.email().touched() && loginForm.email().invalid()) {
+      <div class="error-container">
+        @for (error of loginForm.email().errors(); track error) {
+          <span>{{ error.message }}</span>
+        }
+      </div>
+    }
 
-  <mat-form-field>
-    <mat-label>Correo 2</mat-label>
-    <input
-      [(ngModel)]="email2"
-      matInput
-      placeholder="Correo"
-      required>
-  </mat-form-field>
+    <!--    password-->
+    <mat-form-field>
+      <mat-label>Contrasena</mat-label>
+      <input
+        [formField]="loginForm.password"
+        matInput
+        type="password"
+        placeholder="Contrasena">
+    </mat-form-field>
 
-  <p>{{email}}</p>
-  <p>{{email2}}</p>
-
-
-
-  <mat-form-field>
-    <mat-label>Select</mat-label>
-    <mat-select>
-      <mat-option value="one">First option</mat-option>
-      <mat-option value="two">Second option</mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <mat-form-field>
-    <mat-label>Textarea</mat-label>
-    <textarea matInput></textarea>
-  </mat-form-field>
-
+    @if (loginForm.password().touched() && loginForm.password().invalid()) {
+      <div class="error-container">
+        @for (error of loginForm.password().errors(); track error) {
+          <span>{{ error.message }}</span>
+        }
+      </div>
+    }
+    <button matButton="filled" type="submit" [disabled]="loginForm().invalid()">Ingresar</button>
+  </form>
 </section>

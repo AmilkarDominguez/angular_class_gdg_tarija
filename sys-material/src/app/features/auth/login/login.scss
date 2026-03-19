@@ -10,3 +10,12 @@
   gap: 1rem;
 }
 
+.form-login{
+  display: flex;
+  flex-direction: column;
+}
+
+.error-container {
+  margin: 0.5rem 0 1rem 0;
+  color: red;
+}
