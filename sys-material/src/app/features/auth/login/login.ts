@@ -13,8 +13,9 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { email, form, FormField, required, submit } from '@angular/forms/signals';
-import { MatButton } from '@angular/material/button';
+import { MatButton, MatIconButton } from '@angular/material/button';
 import { ProductsService } from '../../../core/services/products-service';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-login',
@@ -26,13 +27,14 @@ import { ProductsService } from '../../../core/services/products-service';
     FormsModule,
     FormField,
     MatButton,
+    MatIcon,
+    MatIconButton,
   ],
   templateUrl: './login.html',
   styleUrl: './login.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Login {
-
   loginModel = signal<LoginData>({
     email: '',
     password: '',
@@ -45,7 +47,6 @@ export class Login {
   });
 
   onSubmit(event: Event) {
-
     event.preventDefault();
     submit(this.loginForm, {
       action: async () => {
@@ -55,4 +56,10 @@ export class Login {
     });
   }
 
+  hide = signal(true);
+
+  clickEvent(event: MouseEvent) {
+    this.hide.set(!this.hide());
+    event.stopPropagation();
+  }
 }
