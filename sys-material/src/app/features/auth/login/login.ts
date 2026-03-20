@@ -2,20 +2,15 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { email, form, FormField, required, submit } from '@angular/forms/signals';
+import { MatButton, MatIconButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
 
 interface LoginData {
   email: string;
   password: string;
 }
-
-import {
-  FormsModule,
-  ReactiveFormsModule,
-} from '@angular/forms';
-import { email, form, FormField, required, submit } from '@angular/forms/signals';
-import { MatButton, MatIconButton } from '@angular/material/button';
-import { ProductsService } from '../../../core/services/products-service';
-import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-login',

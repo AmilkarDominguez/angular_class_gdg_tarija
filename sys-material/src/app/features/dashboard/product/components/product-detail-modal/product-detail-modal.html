@@ -1,0 +1,47 @@
+<h2 mat-dialog-title class="modal-title">
+  <mat-icon class="modal-title-icon">tag</mat-icon>
+  Detalle del Producto
+</h2>
+
+<mat-dialog-content class="modal-content">
+  <div class="detail-grid print-area">
+
+    <div class="detail-header">
+      <img [src]="product.image" [alt]="product.title" style="height: 80px; object-fit: contain; margin-bottom: 0.5rem;" />
+      <div class="detail-name">{{ product.title }}</div>
+    </div>
+
+    <mat-divider />
+
+    <div class="detail-section">
+      <span class="detail-label">Precio</span>
+      <span class="detail-value">{{ product.price }}</span>
+    </div>
+
+    <div class="detail-section">
+      <span class="detail-label">Descripción</span>
+      <span class="detail-value">{{ product.description }}</span>
+    </div>
+
+    <div class="detail-section">
+      <span class="detail-label">Categoría</span>
+      <span class="detail-value">{{ product.category }}</span>
+    </div>
+
+    <mat-divider />
+
+    <div class="detail-section">
+      <span class="detail-label">ID del Registro</span>
+      <span class="detail-value detail-id">{{ product.id }}</span>
+    </div>
+
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions class="modal-actions" align="end">
+  <button mat-stroked-button (click)="onClose()">Cerrar</button>
+  <button mat-stroked-button (click)="onPrint()">
+    <mat-icon>print</mat-icon>
+    Imprimir
+  </button>
+</mat-dialog-actions>

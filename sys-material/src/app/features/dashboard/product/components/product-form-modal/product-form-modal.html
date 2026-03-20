@@ -1,0 +1,63 @@
+<h2 mat-dialog-title class="modal-title">
+  <mat-icon class="modal-title-icon">{{ isEditMode ? 'edit' : 'add_shopping_cart' }}</mat-icon>
+  {{ isEditMode ? 'Editar Producto' : 'Nuevo Producto' }}
+</h2>
+
+<mat-dialog-content class="modal-content">
+  <form [formGroup]="form" class="form-grid">
+
+    <mat-form-field appearance="outline" class="field-full">
+      <mat-label>Nombre del producto</mat-label>
+      <input matInput formControlName="title" placeholder="Ej. Laptop HP 15" />
+      <mat-icon matSuffix>label</mat-icon>
+      @if (getFieldError('title')) {
+        <mat-error>{{ getFieldError('title') }}</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="field-half">
+      <mat-label>Precio</mat-label>
+      <input matInput formControlName="price" type="number" placeholder="Ej. 299.99" />
+      <mat-icon matSuffix>attach_money</mat-icon>
+      @if (getFieldError('price')) {
+        <mat-error>{{ getFieldError('price') }}</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="field-half">
+      <mat-label>Categoría</mat-label>
+      <input matInput formControlName="category" placeholder="Ej. Electrónica" />
+      <mat-icon matSuffix>category</mat-icon>
+      @if (getFieldError('category')) {
+        <mat-error>{{ getFieldError('category') }}</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="field-full">
+      <mat-label>Descripción</mat-label>
+      <textarea matInput formControlName="description" rows="2" placeholder="Ej. Laptop con procesador Intel i5"></textarea>
+      <mat-icon matSuffix>description</mat-icon>
+      @if (getFieldError('description')) {
+        <mat-error>{{ getFieldError('description') }}</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="field-full">
+      <mat-label>URL de imagen</mat-label>
+      <input matInput formControlName="image" placeholder="Ej. https://ejemplo.com/imagen.png" />
+      <mat-icon matSuffix>image</mat-icon>
+      @if (getFieldError('image')) {
+        <mat-error>{{ getFieldError('image') }}</mat-error>
+      }
+    </mat-form-field>
+
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions class="modal-actions" align="end">
+  <button mat-stroked-button (click)="onCancel()">Cancelar</button>
+  <button mat-flat-button color="primary" (click)="onSave()">
+    <mat-icon>save</mat-icon>
+    {{ isEditMode ? 'Guardar cambios' : 'Registrar' }}
+  </button>
+</mat-dialog-actions>
