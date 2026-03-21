@@ -20,11 +20,17 @@
     <span class="result-count">{{ filteredProducts().length }} resultado(s)</span>
   </div>
 
-  <app-product-table
-    [data]="filteredProducts()"
-    (edit)="onEdit($event)"
-    (view)="onView($event)"
-    (delete)="onDelete($event)"
-  />
+  @if (loading()) {
+    <div class="loading-container">
+      <mat-spinner diameter="48" />
+    </div>
+  } @else {
+    <app-product-table
+      [data]="filteredProducts()"
+      (edit)="onEdit($event)"
+      (view)="onView($event)"
+      (delete)="onDelete($event)"
+    />
+  }
 
 </div>

@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { email, form, FormField, required, submit } from '@angular/forms/signals';
 import { MatButton, MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
+import { LoginService } from '../../../core/services/login.service';
 
 interface LoginData {
   email: string;
@@ -27,9 +28,12 @@ interface LoginData {
   ],
   templateUrl: './login.html',
   styleUrl: './login.scss',
+  providers: [LoginService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Login {
+  constructor(private loginService: LoginService) {}
+
   loginModel = signal<LoginData>({
     email: '',
     password: '',
@@ -47,6 +51,7 @@ export class Login {
       action: async () => {
         const credentials = this.loginModel();
         console.log('Credenciales de login:', credentials);
+        this.loginService.login(credentials.email, credentials.password);
       },
     });
   }
@@ -57,4 +62,5 @@ export class Login {
     this.hide.set(!this.hide());
     event.stopPropagation();
   }
+
 }
